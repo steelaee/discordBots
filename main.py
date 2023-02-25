@@ -2,7 +2,7 @@ import discord
 from discord.ext import  commands
 import asyncio
 
-TOKEN = 'MTA3ODY4MDUzNTY2NjI3MDM2MA.GQFEe2.5QO05ay702Tga1DPM_F-glB8qALN90UIl8ijo8'
+TOKEN = 'MTA3ODY4MDUzNTY2NjI3MDM2MA.GH14QX.Pgd7OD_V_e8_Oj9fev81deCoVPJBFJsGxAORyE'
 intents = discord.Intents.default()
 client = commands.Bot(command_prefix='!', intents=intents)
 
@@ -29,12 +29,10 @@ async def play_voice(channel, oldName):
     await channel.edit(name="УВАГА ВОЛОДЯ В КАНАЛІ УВАГА")
     vc = await channel.connect()
     vc.play(discord.FFmpegPCMAudio(executable="C:/ffmpeg/bin/ffmpeg.exe", source="C:/Users/44782/Desktop/audio_2023-02-24_23-07-45.ogg"))
-    while(True):
-        await asyncio.sleep(1)
-        if not vc.is_playing():
-            await channel.edit(name=oldName)
-            await vc.disconnect()
-            break
+    await asyncio.sleep(6)
+    await channel.edit(name=oldName)
+    await vc.disconnect()
+    
 
 if __name__ == '__main__':
     client.run(TOKEN)
